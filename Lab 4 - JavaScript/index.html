@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<header>
+    <title>Sort table</title>
+    <meta charset="UTF-8">
+    <script src="sortTable.js"></script>
+    <style>
+        table {
+            border: 2px solid black;
+            margin-left: 30%; 
+            margin-right: 30%; 
+        }
+        th, td {
+            padding: 15px;
+            height: 30px;
+            border: 1px solid black;
+        }
+    </style>
+</header>
+
+<body>
+    <table id="myTable">
+        <tr>
+            <th onclick="sort(0)">Writers</th>
+            <th onclick="sort(1)">Singers</th>
+            <th onclick="sort(2)">Actors</th>
+        </tr>
+
+        <tr>
+            <td>Mihai Eminescu</td>
+            <td>Zara Larsson</td>
+            <td>Johnny Deep</td>
+        </tr>
+        <tr>
+            <td>William Shakespeare</td>
+            <td>Ariana Grande</td>
+            <td>Sergiu Nicolaescu</td>
+        </tr>
+        <tr>
+            <td>Arthur Conan Doyle</td>
+            <td>O-Zone</td>
+            <td>Zac Efron</td>
+        </tr>
+        <tr>
+            <td>Sandra Brown</td>
+            <td>Frank Sinatra</td>
+            <td>Angelina Jolie</td>
+        </tr>
+        <tr>
+            <td>Marin Preda</td>
+            <td>Ludwig van Beethoven</td>
+            <td>Adela Popescu</td>
+        </tr>
+    </table>
+</body>
+</html>

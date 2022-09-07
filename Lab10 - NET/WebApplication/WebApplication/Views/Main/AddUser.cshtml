@@ -1,0 +1,130 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#addForm").on("submit", function (event) {
+                event.preventDefault();
+                if (checkForm() == true) {
+                    $.ajax({
+                        method: "POST",
+                        url: $(this).attr("action"),
+                        data: {
+                            name: $("#name").val(),
+                            username: $("#username").val(),
+                            password: $("#password").val(),
+                            age: $("#age").val(),
+                            role: $("#role").val(),
+                            email: $("#email").val(),
+                            webpage: $("#webpage").val()
+                        },
+                        success: function (data) {
+                            alert(data);
+                            window.location.replace("/Main")
+                        }
+                    });
+                }
+                
+            });
+
+            function checkForm() {
+                if ($("#name").val() == '') {
+                    alert('Please enter a name.');
+                    return false;
+                }
+                else if ($("#username").val() == '') {
+                    alert('Please enter an username.');
+                    return false;
+                }
+                else if ($("#password").val() == '') {
+                    alert('Please enter a password.');
+                    return false;
+                }
+                else if ($("#age").val() == '' || isNaN($("#age").val())) {
+                    alert('Please enter an age (number).');
+                    return false;
+                }
+                else if ($("#role").val() == '') {
+                    alert('Please enter a role.');
+                    return false;
+                }
+                else if ($("#email").val() == '') {
+                    alert('Please enter an email.');
+                    return false;
+                }
+                else if ($("#webpage").val() == '') {
+                    alert('Please enter a webpage.');
+                    return false;
+                }
+                return true;
+            };
+        });
+    </script>
+</head>
+<body>
+    <div class="centralDiv">
+        <header>
+            <h1 class="mb-3">Add User</h1>
+        </header>
+        <br /> <br />
+        <main>
+            <form id="addForm" action="/Main/AddUserSubmit">
+                <label class="label label-default">
+                    Name:
+                    <input id="name" type="text" class="form-control" name="name" placeholder="name">
+                </label>
+                <br />
+                <label class="label label-default">
+                    Username:
+                    <input id="username" type="text" class="form-control" name="username" placeholder="Username">
+                </label>
+                <br />
+                <label class="label label-default">
+                    Password:
+                    <input id="password" type="text" class="form-control" name="password" placeholder="Password">
+                </label>
+                <br />
+                <label class="label label-default">
+                    Age:
+                    <input id="age" type="text" class="form-control" name="age" placeholder="Age">
+                </label>
+                <br />
+                <label class="label label-default">
+                    Role:
+                    <input id="role" type="text" class="form-control" name="role" placeholder="Role">
+                </label>
+                <br />
+                <label class="label label-default">
+                    Email:
+                    <input id="email" type="text" class="form-control" name="email" placeholder="Email">
+                </label>
+                <br />
+                <label class="label label-default">
+                    Webpage:
+                    <input id="webpage" type="text" class="form-control" name="webpage" placeholder="Webpage">
+                </label>
+                <br>
+
+                <input type="submit" class="btn btn-dark" value="Add User">
+            </form>
+        </main>
+        <br> <br> <br>
+                  <footer>
+                      <a href="/Main" type="button" class="btn btn-outline-dark" value="Back to home page">Back to home page</a>
+                  </footer>
+    </div>
+    
+
+</body>
+</html>
+

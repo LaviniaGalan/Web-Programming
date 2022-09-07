@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<header>
+    <title>Sort table</title>
+    <meta charset="UTF-8">
+    <script src="sort_v2.js"></script>
+    <style>
+        table {
+            border: 2px solid black;
+            margin-left: 30%; 
+            margin-right: 30%; 
+        }
+        th, td {
+            padding: 15px;
+            height: 30px;
+            font-size: 20px;
+            border: 1px solid black;
+        }
+    </style>
+</header>
+
+<body>
+    <table id="myTable">
+        <tr>
+            <th onclick="sort(0)">Nr. crt.</th>
+            <th onclick="sort(1)">First name</th>
+            <th onclick="sort(2)">Last name</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>Ana</td>
+            <td>Popescu</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>Zoe</td>
+            <td>Ionescu</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Ion</td>
+            <td>Anisie</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Marin</td>
+            <td>Zarnescu</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Camelia</td>
+            <td>Popa</td>
+        </tr>
+    </table>
+</body>
+</html>

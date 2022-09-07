@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<header>
+    <title>Browse user</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script>
+        $(document).ready(function() {
+            
+            $('#submitButton').click(function () {
+                var filterType = $("#filterSelection option:selected").text();
+                var filterText = $("#filterText").val();
+                if (filterText != '')
+                {
+                    $.ajax({
+                        url: "browse-user.php",
+                        type: "POST",
+                        data: {filterType:filterType, filterText: filterText},
+                        success:function (data) {
+                            console.log("in success");
+                            $("#resTable").html(data);
+                            $("#prevFilterLabel").text(filterType);
+                        }
+                    })
+                }
+                else{
+                    alert("Complete the required field!");
+                }
+            });
+
+            });
+    </script>
+</header>
+<body>
+    <div id="result" class="centralDiv">
+        <div>
+            <label>Filter by:</label>
+            <select name="Filter attribute" id="filterSelection">
+              <option value="role">Role</option>
+              <option value="name">Name</option>
+            </select>
+        </div>
+            <br><br>
+            <input type="text" id="filterText" placeholder="Filter Text" class="formTextBox"> 
+            <br><br>
+            <input type="submit" id="submitButton" value="Filter" class="mainButton">
+            <br><br>
+            <label>Filter used for the previous browsing action: </label>
+            <label id="prevFilterLabel">not filtered</label>
+            <br><br>
+
+        <table id="resTable">
+        </table>
+
+        <br> <br> <br> <br>
+        <a href="./index.html" type="button" class="mainButton">Back to home page</a>
+    </div>
+</body>
+</html>

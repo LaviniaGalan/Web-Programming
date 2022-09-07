@@ -1,0 +1,88 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Main</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+            getData();
+
+            function getData() {
+                $.get("/Main/GetUsers",
+                    function (data, status) {
+                        $("#usersTable").html(data);
+                    });
+            };
+
+            $(document).on("click", ".deleteButton", function () {
+                var row = $(this).closest("tr");
+                var rowIndex = row.index();
+                var table = document.querySelector("#usersTable");
+                var allRows = table.rows;
+
+                var userId = allRows[rowIndex].getElementsByTagName("td")[0].innerHTML;
+                var name = allRows[rowIndex].getElementsByTagName("td")[1].innerHTML;
+
+                if (confirm("Are you sure you want to delete the user " + name + "?")) {
+                    console.log(userId);
+                    $.ajax({
+                        url: "/Main/DeleteUser",
+                        type: "DELETE",
+                        data: { userId: userId },
+                        success: function (data) {
+                            alert(data);
+                            getData();
+                        }
+                    })
+                }
+                else {
+                    return false;
+                }
+
+            });
+
+            $(document).on("click", ".updateButton", function () {
+                var row = $(this).closest("tr");
+                var rowIndex = row.index();
+                var table = document.querySelector("#usersTable");
+                var allRows = table.rows;
+
+                var userId = allRows[rowIndex].getElementsByTagName("td")[0].innerHTML;
+                console.log(userId);
+                var newLocation = "/Main/UpdateUser/" + userId;
+                window.location.replace(newLocation);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="centralDiv">
+            <h1 class="mb-3">Enterprise System</h1>
+        </div>
+    </header>
+    <a href="/Login/LogoutSubmit" type="button" class="btn btn-dark">Logout</a>
+    <br />
+    <main>
+        <div id="mainDiv" class="centralDiv">
+            <a href="/Main/AddUser" type="button" class="btn btn-dark" style="width:200px;">Add user</a>
+            <br />
+            <a href="/Filter" type="button" class="btn btn-dark" style="width:200px;">Filter users</a>
+            <br /> <br />
+            <table id="usersTable" class="table table-striped">
+            </table>
+            <br> <br> <br>
+
+        </div>
+    </main>
+</body>
+</html>

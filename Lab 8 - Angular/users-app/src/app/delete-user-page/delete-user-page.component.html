@@ -1,0 +1,20 @@
+<div class="centralDiv">
+  <table mdbTable class="table table-striped">
+    <tbody>
+    <tr mdbTableCol *ngFor="let user of users">
+      <th scope="row">{{user.userid}}</th>
+      <td>{{user.name}}</td>
+      <td>{{user.username}}</td>
+      <td>{{user.password}}</td>
+      <td>{{user.age}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.webpage}}</td>
+      <td><button class="btn btn-secondary btn-sm" (click)="deleteUser(user.userid)">Delete</button> </td>
+    </tr>
+    </tbody>
+  </table>
+  <br><br><br>
+  <button type="button" class="btn btn-secondary btn-lg" style="width: 30%" routerLink="/home-page" routerLinkActive="active">Back to homepage</button>
+</div>
+

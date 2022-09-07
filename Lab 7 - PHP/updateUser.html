@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<header>
+    <title>Update user</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script>
+        $(document).ready(function() {
+            $("#updateForm").hide();
+            getData();
+            function getData(){
+            $.ajax({
+                   url: "select-all-for-modif.php",
+                   type: "POST",
+                   data: {action:"Update"},
+                   success:function (data) {
+                    $("#updateTable").html(data);
+                    console.log("in success");
+                   }
+               })
+            };
+
+            $(document).on("click", ".UpdateButton", function(){
+                $("#dataDiv").hide();
+                $("#updateForm").show();
+
+                var row = $(this).closest('tr');
+                var rowIndex = row.index(); 
+                var table = document.querySelector("#updateTable");
+                var allRows = table.rows;
+
+                var id = allRows[rowIndex].getElementsByTagName("td")[0].innerHTML;
+                var name = allRows[rowIndex].getElementsByTagName("td")[1].innerHTML;
+                var username = allRows[rowIndex].getElementsByTagName("td")[2].innerHTML;
+                var password = allRows[rowIndex].getElementsByTagName("td")[3].innerHTML;
+                var age = allRows[rowIndex].getElementsByTagName("td")[4].innerHTML;
+                var role = allRows[rowIndex].getElementsByTagName("td")[5].innerHTML;
+                var email = allRows[rowIndex].getElementsByTagName("td")[6].innerHTML;
+                var webpage = allRows[rowIndex].getElementsByTagName("td")[7].innerHTML;
+
+                $("#idLabel").text(id);
+                $('#name').val(name);
+                $('#username').val(username);
+                $('#password').val(password);
+                $('#age').val(age);
+                $('#role').val(role);
+                $('#email').val(email);
+                $('#webpage').val(webpage);
+            });
+
+
+            $(document).on("click", "#submitButton", function(){
+                var id = $("#idLabel").text();
+                var name = $("#name").val();
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var age = $("#age").val();
+                var role = $('#role').val();
+                var email = $("#email").val();
+                var webpage = $("#webpage").val();
+
+                if (name != '' && username != '' && password != '' && role != '' && email != '')
+                {
+                    $.ajax({
+                        url: "update-user.php",
+                        type: "POST",
+                        data: {action:"Update", id:id, name: name, username:username, password:password, age:age, role:role, email:email, webpage:webpage},
+                        success:function (data) {
+                            console.log("in success");
+                            alert(data);
+
+                            $("#dataDiv").show();
+                            $("#updateForm").hide();
+                            getData();
+                        }
+                    })
+                }
+                else{
+                    alert("Complete the required fields!");
+                    }
+
+            });
+        })
+    </script>
+</header>
+<body>
+    <div id="dataDiv" class="centralDiv">
+        <table id="updateTable">
+        </table>
+
+        <br> <br> <br> <br>
+        <a href="./index.html" type="button" class="mainButton">Back to home page</a>
+    </div>
+
+    <div id="updateForm" class="centralDiv">
+        <h1>Update user</h1>
+        <label>ID : </label>
+        <label id="idLabel">not selected</label> <br>
+        
+        <input type="text" id="name" name="name" placeholder="Name" class="formTextBox"> <br>
+        <input type="text" id="username" name="username" placeholder="Username" class="formTextBox"> <br>
+        <input type="text" id="password" name="password" placeholder="Password" class="formTextBox"> <br>
+        <input type="text" id="age" name="age" placeholder="Age" class="formTextBox"> <br>
+        <input type="text" id="role" name="role" placeholder="Role" class="formTextBox"> <br>
+        <input type="text" id="email" name="email" placeholder="Email" class="formTextBox"> <br>
+        <input type="text" id="webpage" name="webpage" placeholder="Webpage" class="formTextBox"> <br>
+        <input type="submit" value="Submit" id="submitButton" class="mainButton">
+
+    </div>
+</body>
+</html>

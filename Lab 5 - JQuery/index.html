@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $(".desktop_1").show();
+        $(".desktop_2").hide();
+        $(".desktop_3").hide();
+        $(".desktop_4").hide();
+
+        function transition(old_desktop, new_desktop){
+            $( old_desktop ).animate({
+                        marginTop: '700px',
+                        height: '0px'
+                        }, 
+                        2000, function() {
+                            $(this).css({top : '-700px', marginTop: '0px', height : '700px'});
+                            $(this).hide();
+                            
+                    });
+            $( new_desktop ).show().animate({
+                        top: '0px',
+                        height: '100%'
+                        }, 
+                        2000, function() {
+                    });
+        }
+
+        $(".desktop_1").click(function(){
+            transition(".desktop_1", ".desktop_2");
+        });
+
+        $(".desktop_2").click(function(){
+            transition(".desktop_2", ".desktop_3");
+        });
+
+        $(".desktop_3").click(function(){
+            transition(".desktop_3", ".desktop_4");
+        });
+
+        $(".desktop_4").click(function(){
+            transition(".desktop_4", ".desktop_1");
+        });
+
+
+    });
+    </script>
+</head>
+<body>
+
+    <div class="main_div">
+
+        <div class="desktop_4">
+            <img src="desktop_4_photo_1.jpg" style="width:30%; height:100%">
+            <p style="width: 30%;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus lectus, sollicitudin non neque et, tincidunt pretium justo. Proin laoreet volutpat ipsum, vitae tincidunt nisl eleifend posuere. Duis et molestie lorem. Pellentesque eleifend est massa, eget vehicula nibh maximus eget. Pellentesque dictum justo sed elit lacinia blandit. Sed molestie porttitor augue id feugiat. Vestibulum congue ut lectus vel pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nam pharetra felis eu nulla aliquet vehicula.
+                <br> <br>
+                Integer vehicula, risus eu malesuada rhoncus, elit erat scelerisque tortor, nec fermentum sem mauris et leo. Aenean a porta libero, eu malesuada lacus. Praesent arcu tellus, mollis ut sodales eget, sagittis sed odio. Praesent pellentesque nibh vitae neque vehicula, at finibus elit facilisis. Aenean eu sem turpis. Maecenas nisl erat, accumsan ac metus quis, molestie accumsan enim. Vestibulum vehicula venenatis rutrum. Maecenas ornare est vel lectus feugiat, at vehicula nisl tempor. In auctor erat vel lectus aliquet, quis fermentum sapien iaculis.
+                <br> <br>
+                Quisque convallis ex est, at elementum ex mattis sit amet. Nam elementum bibendum felis. Vivamus id urna auctor, fermentum lacus vitae, venenatis lectus. Nulla semper fringilla gravida. Mauris dolor sapien, imperdiet sed dapibus sit amet, luctus at lacus. Pellentesque molestie turpis ut eleifend blandit. Nullam est tellus, pellentesque id arcu vel, consectetur tincidunt est. In sit amet quam sed est venenatis sollicitudin. Mauris molestie velit quis leo molestie, sed commodo est ullamcorper. Donec ac tellus posuere, mollis nulla quis, cursus leo.
+            </p>
+            <img src="desktop_4_photo_2.jpg" style="width:30%; height:100%">
+            
+        </div>
+
+        <div class="desktop_3">
+            <p style="width: 30%;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus lectus, sollicitudin non neque et, tincidunt pretium justo. Proin laoreet volutpat ipsum, vitae tincidunt nisl eleifend posuere. Duis et molestie lorem. Pellentesque eleifend est massa, eget vehicula nibh maximus eget. Pellentesque dictum justo sed elit lacinia blandit. Sed molestie porttitor augue id feugiat. Vestibulum congue ut lectus vel pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nam pharetra felis eu nulla aliquet vehicula.
+                <br> <br>
+                Integer vehicula, risus eu malesuada rhoncus, elit erat scelerisque tortor, nec fermentum sem mauris et leo. Aenean a porta libero, eu malesuada lacus. Praesent arcu tellus, mollis ut sodales eget, sagittis sed odio. Praesent pellentesque nibh vitae neque vehicula, at finibus elit facilisis. Aenean eu sem turpis. Maecenas nisl erat, accumsan ac metus quis, molestie accumsan enim. Vestibulum vehicula venenatis rutrum. Maecenas ornare est vel lectus feugiat, at vehicula nisl tempor. In auctor erat vel lectus aliquet, quis fermentum sapien iaculis.
+                <br> <br>
+                Quisque convallis ex est, at elementum ex mattis sit amet. Nam elementum bibendum felis. Vivamus id urna auctor, fermentum lacus vitae, venenatis lectus. Nulla semper fringilla gravida. Mauris dolor sapien, imperdiet sed dapibus sit amet, luctus at lacus. Pellentesque molestie turpis ut eleifend blandit. Nullam est tellus, pellentesque id arcu vel, consectetur tincidunt est. In sit amet quam sed est venenatis sollicitudin. Mauris molestie velit quis leo molestie, sed commodo est ullamcorper. Donec ac tellus posuere, mollis nulla quis, cursus leo.
+            </p>
+            <img src="desktop_3_photo_1.jpg" style="width:30%; height:100%">
+            <img src="desktop_3_photo_2.jpg" style="width:30%; height:100%">
+            
+        </div>
+
+        <div class="desktop_2">
+            <img src="desktop_2_photo_1.jpg" style="width:30%; height:100%">
+            <img src="desktop_2_photo_2.jpg" style="width:30%; height:100%">
+            <p style="width: 30%">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus lectus, sollicitudin non neque et, tincidunt pretium justo. Proin laoreet volutpat ipsum, vitae tincidunt nisl eleifend posuere. Duis et molestie lorem. Pellentesque eleifend est massa, eget vehicula nibh maximus eget. Pellentesque dictum justo sed elit lacinia blandit. Sed molestie porttitor augue id feugiat. Vestibulum congue ut lectus vel pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nam pharetra felis eu nulla aliquet vehicula.
+                <br> <br>
+                Integer vehicula, risus eu malesuada rhoncus, elit erat scelerisque tortor, nec fermentum sem mauris et leo. Aenean a porta libero, eu malesuada lacus. Praesent arcu tellus, mollis ut sodales eget, sagittis sed odio. Praesent pellentesque nibh vitae neque vehicula, at finibus elit facilisis. Aenean eu sem turpis. Maecenas nisl erat, accumsan ac metus quis, molestie accumsan enim. Vestibulum vehicula venenatis rutrum. Maecenas ornare est vel lectus feugiat, at vehicula nisl tempor. In auctor erat vel lectus aliquet, quis fermentum sapien iaculis.
+                <br> <br>
+                Quisque convallis ex est, at elementum ex mattis sit amet. Nam elementum bibendum felis. Vivamus id urna auctor, fermentum lacus vitae, venenatis lectus. Nulla semper fringilla gravida. Mauris dolor sapien, imperdiet sed dapibus sit amet, luctus at lacus. Pellentesque molestie turpis ut eleifend blandit. Nullam est tellus, pellentesque id arcu vel, consectetur tincidunt est. In sit amet quam sed est venenatis sollicitudin. Mauris molestie velit quis leo molestie, sed commodo est ullamcorper. Donec ac tellus posuere, mollis nulla quis, cursus leo.
+            </p>
+            
+        </div>
+
+        <div class="desktop_1">
+            <img src="desktop_1_photo_1.jpg" style="width:30%; height:100%">
+            <p style="width: 30%;">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi lacus lectus, sollicitudin non neque et, tincidunt pretium justo. Proin laoreet volutpat ipsum, vitae tincidunt nisl eleifend posuere. Duis et molestie lorem. Pellentesque eleifend est massa, eget vehicula nibh maximus eget. Pellentesque dictum justo sed elit lacinia blandit. Sed molestie porttitor augue id feugiat. Vestibulum congue ut lectus vel pharetra. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse potenti. Nam pharetra felis eu nulla aliquet vehicula.
+                <br> <br>
+                Integer vehicula, risus eu malesuada rhoncus, elit erat scelerisque tortor, nec fermentum sem mauris et leo. Aenean a porta libero, eu malesuada lacus. Praesent arcu tellus, mollis ut sodales eget, sagittis sed odio. Praesent pellentesque nibh vitae neque vehicula, at finibus elit facilisis. Aenean eu sem turpis. Maecenas nisl erat, accumsan ac metus quis, molestie accumsan enim. Vestibulum vehicula venenatis rutrum. Maecenas ornare est vel lectus feugiat, at vehicula nisl tempor. In auctor erat vel lectus aliquet, quis fermentum sapien iaculis.
+                <br> <br>
+                Quisque convallis ex est, at elementum ex mattis sit amet. Nam elementum bibendum felis. Vivamus id urna auctor, fermentum lacus vitae, venenatis lectus. Nulla semper fringilla gravida. Mauris dolor sapien, imperdiet sed dapibus sit amet, luctus at lacus. Pellentesque molestie turpis ut eleifend blandit. Nullam est tellus, pellentesque id arcu vel, consectetur tincidunt est. In sit amet quam sed est venenatis sollicitudin. Mauris molestie velit quis leo molestie, sed commodo est ullamcorper. Donec ac tellus posuere, mollis nulla quis, cursus leo.
+            </p>
+            <img src="desktop_1_photo_2.jpg" style="width:30%; height:100%">
+        </div>
+
+    </div>
+</body>
+</html>

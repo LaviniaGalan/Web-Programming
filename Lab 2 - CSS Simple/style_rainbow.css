@@ -1,0 +1,61 @@
+.main_div {
+    position: relative;
+    width:100%;
+    left: -29%;
+    height: 150px;
+}
+
+.div_red {
+    background: linear-gradient(to bottom, #ff0000, #ff9900, transparent 90%);
+    position: absolute;
+    top: 130px;
+    width: 100%;
+    height: 20px;
+    transform: rotate(-10deg);
+    z-index: 6;
+}
+.div_orange {
+    background: linear-gradient(to bottom, transparent 10%, #ff9900, #eeff00, transparent 90%);
+    position: absolute;
+    top: 133px;
+    width: 100%;
+    height: 20px;
+    transform: rotate(-9.5deg);
+    z-index: 5;
+}
+.div_yellow {
+    background: linear-gradient(to bottom, transparent 10%, #eeff00, #00ff00, transparent 90%);
+    position: absolute;
+    top: 136px;
+    width: 100%;
+    height: 20px;
+    transform: rotate(-9deg);
+    z-index: 4;
+}
+.div_green {
+    background: linear-gradient(to bottom, transparent 10%, #00ff00, #0000ff, transparent 90%);
+    position: absolute;
+    top: 139px;
+    width: 100%;
+    height: 20px;
+    transform: rotate(-8.5deg);
+    z-index: 3;
+}
+.div_blue {
+    background: linear-gradient(to bottom, transparent 10%, #0000ff, #c300ff, transparent 90%);
+    position: absolute;
+    top: 143px;
+    width: 100%;
+    height: 22px;
+    transform: rotate(-8deg);
+    z-index: 2;
+}
+.div_purple {
+    background: linear-gradient(to bottom, transparent 10%, #c300ff, #ff0055, transparent 90%);
+    position: absolute;
+    top: 147px;
+    width: 100%;
+    height: 22px;
+    transform: rotate(-7.5deg);
+    z-index: 1;
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<header>
+    <title>Delete user</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <script>
+        $(document).ready(function() {
+            getData();
+            function getData(){
+            $.ajax({
+                   url: "select-all-for-modif.php",
+                   type: "POST",
+                   data: {action:"Delete"},
+                   success:function (data) {
+                    $("#deleteTable").html(data);
+                    console.log("in success");
+                   }
+               })
+            };
+
+            $(document).on("click", ".DeleteButton", function(){
+                var row = $(this).closest('tr');
+                var rowIndex = row.index(); 
+                var table = document.querySelector("#deleteTable");
+                var allRows = table.rows;
+
+                var name = allRows[rowIndex].getElementsByTagName("td")[0].innerHTML;
+                var username = allRows[rowIndex].getElementsByTagName("td")[1].innerHTML;
+                var password = allRows[rowIndex].getElementsByTagName("td")[2].innerHTML;
+                var age = allRows[rowIndex].getElementsByTagName("td")[3].innerHTML;
+                var role = allRows[rowIndex].getElementsByTagName("td")[4].innerHTML;
+                var email = allRows[rowIndex].getElementsByTagName("td")[5].innerHTML;
+                var webpage = allRows[rowIndex].getElementsByTagName("td")[6].innerHTML;
+
+                $.ajax({
+                   url: "delete-user.php",
+                   type: "POST",
+                   data: {action:"Delete", name:name, username:username, password:password, age:age, role:role, email:email, webpage:webpage},
+                   success:function (data) {
+                    alert(data);
+                    getData();
+                   }
+               })
+            });
+
+        })
+    </script>
+</header>
+<body>
+    <div id="result" class="centralDiv">
+        <table id="deleteTable">
+        </table>
+        <br> <br> <br> <br>
+        <a href="./index.html" type="button" class="mainButton">Back to home page</a>
+    </div>
+</body>
+</html>

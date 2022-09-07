@@ -1,0 +1,90 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Filter</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#submitButton').click(function () {
+                var filterType = $("#filterSelection option:selected").text();
+                var filterText = $("#filterText").val();
+                if (filterText != '') {
+                    $.ajax({
+                        url: "/Filter/FilterUsers",
+                        type: "POST",
+                        data: { filterType: filterType, filterText: filterText },
+                        success: function (data) {
+                            console.log("in success");
+                            $("#resTable").html(data);
+                            $("#prevFilterLabel").text(filterType);
+                        }
+                    })
+                }
+                else {
+                    alert("Please enter a value for filtering.");
+                }
+            });
+
+        });
+    </script>
+</head>
+<body>
+
+    <div id="result" class="centralDiv">
+        <header>
+            <div>
+            <h1>
+                <label class="col-form-label" style="font-size:20px">
+                    Filter by:
+                    <select name="Filter attribute" id="filterSelection" class="custom-select-sm">
+                        <option value="role">Role</option>
+                        <option value="name">Name</option>
+                    </select>
+                </label>
+            </h1>
+            </div>
+
+            <br><br>
+            <h1>
+                <label class="col-form-label" style="font-size:20px">
+                    Filter Value:
+                    <input type="text" id="filterText" placeholder="Filter Text" class="form-control" style="width:250px;">
+                </label>
+            </h1>
+            <br>
+            <input type="submit" id="submitButton" value="Filter" class="btn btn-dark">
+            <br>
+            <label class="col-form-label">Filter used for the previous browsing action: </label>
+            <label id="prevFilterLabel" class="col-form-label">not filtered</label>
+            <br>
+        </header>
+        <main>
+            <table id="resTable" class="table table-striped">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Username</th>
+                    <th>Password</th>
+                    <th>Age</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Webpage</th>
+                </tr>
+            </table>
+        </main>
+        <br> <br> <br> <br>
+        <a href="/Main" type="button" class="btn btn-dark">Back to home page</a>
+    </div>
+
+
+</body>
+</html>
